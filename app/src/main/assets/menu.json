@@ -7,7 +7,7 @@
         {
           "id":"26576",
           "name":"Appeteasers",
-          "menu-items":[
+          "menu_items":[
             {
               "id":"94298",
               "name":"3 Chicken Wings",
@@ -32,7 +32,7 @@
         {
           "id":"26588",
           "name":"Peri-peri chicken",
-          "menu-items":[
+          "menu_items":[
             {
               "id":"94349",
               "name":"1/4 Chicken",

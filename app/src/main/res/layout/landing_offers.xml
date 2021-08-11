@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dimen_5"
+    android:paddingRight="@dimen/dimen_5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_180"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_200"
+        android:layout_marginRight="@dimen/dimen_20"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:background="@drawable/bg_bottom_sheet"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+        app:layout_constraintEnd_toEndOf="@id/iv_bg"
+        app:layout_constraintStart_toStartOf="@id/iv_bg"
+        app:layout_constraintTop_toBottomOf="@id/iv_bg"/>
+
+    <ImageView
+        android:id="@+id/iv_food"
+        android:layout_width="@dimen/dimen_50"
+        android:layout_height="@dimen/dimen_50"
+        android:src="@drawable/splash_food"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cl_content"
+        app:layout_constraintBottom_toTopOf="@id/cl_content"
+        android:background="@android:color/holo_purple"/>
+
+    <TextView
+        android:id="@+id/tv_titleName"
+        android:text="The Bake One (GhostForth)"
+        android:textSize="@dimen/font_20"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iv_food"
+        app:layout_constraintLeft_toLeftOf="@id/cl_content"
+        app:layout_constraintRight_toRightOf="@id/cl_content"/>
+
+
+    <TextView
+        android:id="@+id/tv_subtitleName"
+        android:text="Lebanese"
+        android:textSize="@dimen/font_14"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_titleName"
+        app:layout_constraintRight_toLeftOf="@id/v_bullet"/>
+
+    <View
+        android:id="@+id/v_bullet"
+        android:layout_width="@dimen/dimen_10"
+        android:layout_height="@dimen/dimen_10"
+        android:background="@drawable/bullet"
+        android:layout_marginTop="@dimen/dimen_5"
+        app:layout_constraintLeft_toLeftOf="@id/cl_content"
+        app:layout_constraintRight_toRightOf="@id/cl_content"
+        app:layout_constraintTop_toTopOf="@id/tv_subtitleName"
+        app:layout_constraintBottom_toBottomOf="@id/tv_subtitleName"/>
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:text="Grill"
+        android:textSize="@dimen/font_14"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_titleName"
+        app:layout_constraintLeft_toRightOf="@id/v_bullet"/>
+
+    <TextView
+        android:id="@+id/tv_minorder"
+        android:text="No Minimum Order"
+        android:textSize="@dimen/font_14"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/v_bullet"
+        app:layout_constraintLeft_toLeftOf="@id/cl_content"
+        app:layout_constraintRight_toRightOf="@id/cl_content"/>
+
+    <ImageView
+        android:id="@+id/iv_locationMarker"
+        android:layout_width="@dimen/dimen_30"
+        android:layout_height="@dimen/dimen_30"
+        android:paddingTop="@dimen/dimen_5"
+        android:src="@drawable/location_marker"
+        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintLeft_toLeftOf="@id/cl_content"
+        app:layout_constraintTop_toTopOf="@id/tv_location"
+        app:layout_constraintBottom_toBottomOf="@id/tv_location"
+        android:layout_marginLeft="@dimen/dimen_15"
+        app:tint="@color/charcoal_grey_50" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:text="2.6567 miles"
+        android:textSize="@dimen/font_12"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dimen_3"
+        android:paddingRight="@dimen/dimen_3"
+        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintLeft_toRightOf="@id/iv_locationMarker"/>
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dimen_5"
+        style = "?android:attr/ratingBarStyleSmall"
+        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintRight_toLeftOf="@id/tv_rating"
+        app:layout_constraintTop_toTopOf="@id/tv_location"
+        app:layout_constraintBottom_toBottomOf="@id/tv_location"/>
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:text="954"
+        android:textSize="@dimen/font_12"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:paddingLeft="@dimen/dimen_3"
+        android:paddingRight="@dimen/dimen_15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintRight_toRightOf="@id/cl_content"/>
+
+    <TextView
+        android:id="@+id/tv_discount"
+        android:text="25% off when you speand $34"
+        android:textSize="@dimen/font_14"
+        android:textColor="@color/app_color"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_5"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/dimen_15"
+            android:background="@color/light_red"
+            app:layout_constraintRight_toRightOf="@id/cl_content"
+            app:layout_constraintLeft_toLeftOf="@id/cl_content"
+            app:layout_constraintBottom_toBottomOf="@id/cl_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
