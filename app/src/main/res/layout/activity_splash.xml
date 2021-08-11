@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SplashActivity">
+
+    <ImageView
+        android:id="@+id/iv_headerImg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0"
+        android:src="@drawable/splash_food"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cl_bottom"
+        android:scaleType="centerCrop"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/dimen_15"
+        android:paddingLeft="@dimen/dimen_15"
+        android:background="@color/very_light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="@dimen/dimen_20"
+        app:layout_constraintTop_toBottomOf="@+id/iv_headerImg" >
+
+        <TextView
+            android:id="@+id/txt_header"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:text="Where on Earth are you?"
+            android:textSize="@dimen/font_20"
+            android:paddingTop="@dimen/dimen_20"
+            android:textColor="@color/charcoal_grey"
+            android:fontFamily="@font/opensans_semibold"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/txt_footer"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:text="Let us use your location to show you great food places nearby."
+            android:textSize="@dimen/font_14"
+            android:textColor="@color/charcoal_grey_50"
+            android:fontFamily="@font/opensans_semibold"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_10"
+            app:layout_constraintTop_toBottomOf="@id/txt_header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_footer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/app_color"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/opensans_semibold"
+            android:textSize="@dimen/font_17"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:text="Explore The Restraunt"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
