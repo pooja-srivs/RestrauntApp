@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.restrauntapp.MainActivity
+import com.example.restrauntapp.view.home.MainActivity
 import com.example.restrauntapp.R
 
 class SplashActivity : AppCompatActivity() {

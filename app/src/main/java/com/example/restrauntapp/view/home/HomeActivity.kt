@@ -1,7 +1,8 @@
-package com.example.restrauntapp
+package com.example.restrauntapp.view.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.restrauntapp.R
 import com.example.restrauntapp.util.ResourceUtil
 
 class MainActivity : AppCompatActivity() {
