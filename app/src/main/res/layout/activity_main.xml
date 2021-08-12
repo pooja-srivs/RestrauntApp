@@ -18,14 +18,34 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />
 
+    <TextView
+        android:id="@+id/tv_Title"
+        android:text="Top Rated NearBy Restaurants"
+        android:textSize="@dimen/font_20"
+        android:paddingTop="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_15"
+        app:layout_constraintTop_toBottomOf="@id/ll_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/dimen_15"
         tools:itemCount="24"
+        android:layout_marginLeft="@dimen/dimen_5"
+        android:layout_marginRight="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_5"
         tools:listitem="@layout/landing_offers"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_search"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_Title"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

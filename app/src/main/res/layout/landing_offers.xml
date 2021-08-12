@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/dimen_5"
     android:paddingRight="@dimen/dimen_5"
+    android:layout_marginTop="@dimen/dimen_15"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -45,7 +46,7 @@
     <TextView
         android:id="@+id/restName"
         android:text="The Bake One (GhostForth)"
-        android:textSize="@dimen/font_20"
+        android:textSize="@dimen/font_18"
         android:paddingTop="@dimen/dimen_5"
         android:textColor="@color/charcoal_grey"
         android:fontFamily="@font/opensans_semibold"
@@ -65,47 +66,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/restName"
-        app:layout_constraintStart_toStartOf="@id/restName"
-        app:layout_constraintEnd_toEndOf="@id/restName"/>
+        app:layout_constraintStart_toStartOf="@id/cl_content"
+        app:layout_constraintEnd_toEndOf="@id/cl_content" />
 
     <TextView
         android:id="@+id/tv_addr"
         android:text="Lebanese"
-        android:textSize="@dimen/font_14"
-        android:padding="@dimen/dimen_5"
+        android:textSize="@dimen/font_12"
+        android:paddingTop="@dimen/dimen_5"
         android:textColor="@color/charcoal_grey_50"
         android:fontFamily="@font/opensans_semibold"
         android:layout_width="0dp"
         android:gravity="center"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/restName"
+        app:layout_constraintStart_toStartOf="@id/cl_content"
         app:layout_constraintTop_toBottomOf="@id/tv_cuisine"
-        app:layout_constraintEnd_toStartOf="@id/v_bullet"/>
+        app:layout_constraintEnd_toEndOf="@id/cl_content"
+        app:layout_constraintBottom_toTopOf="@id/ll_neighbour"
+        android:maxLines="2" />
 
-    <View
-        android:id="@+id/v_bullet"
-        android:layout_width="@dimen/dimen_10"
-        android:layout_height="@dimen/dimen_10"
-        android:background="@drawable/bullet"
-        app:layout_constraintLeft_toLeftOf="@id/cl_content"
-        app:layout_constraintRight_toRightOf="@id/cl_content"
-        app:layout_constraintTop_toTopOf="@id/tv_addr"
-        app:layout_constraintBottom_toBottomOf="@id/tv_addr"/>
-
-    <TextView
-        android:id="@+id/tv_neighbour"
-        android:text="Grill"
-        android:textSize="@dimen/font_14"
-        android:padding="@dimen/dimen_5"
-        android:textColor="@color/charcoal_grey_50"
-        android:fontFamily="@font/opensans_semibold"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_neighbour"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_cuisine"
-        app:layout_constraintStart_toEndOf="@id/v_bullet"
+        app:layout_constraintStart_toStartOf="@id/restName"
         app:layout_constraintEnd_toEndOf="@id/restName"
-        android:gravity="center"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_addr"
+        app:layout_constraintBottom_toTopOf="@id/tv_distance"
+        android:paddingTop="@dimen/dimen_5"
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <View
+            android:id="@+id/v_bullet"
+            android:layout_width="@dimen/dimen_10"
+            android:layout_height="@dimen/dimen_10"
+            android:background="@drawable/bullet"/>
+
+        <TextView
+            android:id="@+id/tv_neighbour"
+            android:text="Grill"
+            android:textSize="@dimen/font_12"
+            android:padding="@dimen/dimen_5"
+            android:textColor="@color/charcoal_grey_50"
+            android:fontFamily="@font/opensans_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_locationMarker"
@@ -113,12 +121,13 @@
         android:layout_height="@dimen/dimen_30"
         android:paddingTop="@dimen/dimen_5"
         android:src="@drawable/location_marker"
-        app:layout_constraintTop_toBottomOf="@id/v_bullet"
+        app:layout_constraintTop_toBottomOf="@id/ll_neighbour"
         app:layout_constraintLeft_toLeftOf="@id/cl_content"
         app:layout_constraintTop_toTopOf="@id/tv_distance"
         app:layout_constraintBottom_toBottomOf="@id/tv_distance"
         android:layout_marginLeft="@dimen/dimen_15"
-        app:tint="@color/charcoal_grey_50" />
+        app:tint="@color/charcoal_grey_50"
+        android:paddingBottom="@dimen/dimen_5"/>
 
     <TextView
         android:id="@+id/tv_distance"
@@ -131,8 +140,10 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dimen_3"
         android:paddingRight="@dimen/dimen_3"
-        app:layout_constraintTop_toBottomOf="@id/v_bullet"
-        app:layout_constraintLeft_toRightOf="@id/iv_locationMarker"/>
+        android:paddingBottom="@dimen/dimen_5"
+        app:layout_constraintTop_toBottomOf="@id/ll_neighbour"
+        app:layout_constraintStart_toEndOf="@id/iv_locationMarker"
+        app:layout_constraintBottom_toTopOf="@id/tv_discount" />
 
     <androidx.appcompat.widget.AppCompatRatingBar
         android:id="@+id/ratings"
@@ -141,7 +152,7 @@
         android:paddingTop="@dimen/dimen_5"
         android:layout_marginRight="@dimen/dimen_15"
         style = "?android:attr/ratingBarStyleSmall"
-        app:layout_constraintTop_toBottomOf="@id/v_bullet"
+        app:layout_constraintTop_toBottomOf="@id/ll_neighbour"
         app:layout_constraintEnd_toEndOf="@id/cl_content"
         app:layout_constraintTop_toTopOf="@id/tv_distance"
         app:layout_constraintBottom_toBottomOf="@id/tv_distance"/>
@@ -156,7 +167,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_5"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/dimen_15"
             android:background="@color/light_red"
             app:layout_constraintRight_toRightOf="@id/cl_content"
             app:layout_constraintLeft_toLeftOf="@id/cl_content"

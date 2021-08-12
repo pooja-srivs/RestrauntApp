@@ -13,7 +13,20 @@ data class Restaurants(
     val cuisine_type : String,
     val rating : Int,
     val discount : Int,
+    val distance : Int,
+    val operating_hours : OpeningHours,
     val reviews : List<Reviews>
+)
+
+data class OpeningHours(
+    val monday : String,
+    val tuesday : String,
+    val wednesday : String,
+    val thursday : String,
+    val friday : String,
+    val saturday : String,
+    val sunday : String,
+
 )
 
 data class Reviews(

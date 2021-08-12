@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.restrauntapp.R
+import com.example.restrauntapp.view.entity.RestaurantItem
 
 class RestaurantAdapter private constructor(
     private val diffUtil : DiffUtil.ItemCallback<RestaurantItem>,
-    private val onItemClick : (Int) -> Unit
+    private val onItemClick : (RestaurantItem) -> Unit
 ) : ListAdapter<RestaurantItem, RestaurantAdapter.RestaurantViewHolder>(diffUtil) {
 
     companion object{
@@ -33,7 +34,7 @@ class RestaurantAdapter private constructor(
             }
         }
 
-        fun newInstance(onItemClick : (Int) -> Unit) : RestaurantAdapter{
+        fun newInstance(onItemClick : (RestaurantItem) -> Unit) : RestaurantAdapter{
             return RestaurantAdapter(diffCallback, onItemClick = onItemClick)
         }
     }
@@ -41,43 +42,34 @@ class RestaurantAdapter private constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
         return RestaurantViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.landing_offers, parent, false)
+                .inflate(R.layout.rest_item, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClick)
     }
 
     class RestaurantViewHolder(view : View) : RecyclerView.ViewHolder(view){
         private var restName : TextView = view.findViewById(R.id.restName)
         private var restCuisine : TextView = view.findViewById(R.id.tv_cuisine)
         private var restAddress : TextView = view.findViewById(R.id.tv_addr)
-        private var restNeighbour : TextView = view.findViewById(R.id.tv_neighbour)
         private var restDistance : TextView = view.findViewById(R.id.tv_distance)
         private var restRatings : RatingBar = view.findViewById(R.id.ratings)
         private var restDiscount : TextView = view.findViewById(R.id.tv_discount)
 
-        fun bind(item : RestaurantItem){
+        fun bind(item : RestaurantItem, onItemClick: (RestaurantItem) -> Unit){
 
             restName.text = item.restName
             restCuisine.text = item.cuisineType
             restAddress.text = item.loc
-            restNeighbour.text = item.neighbour
             restDistance.text = item.distance
             restDiscount.text = item.discount
             restRatings.rating = item.rating
+
+            itemView.setOnClickListener {
+                onItemClick.invoke(item)
+            }
         }
     }
 }
-
-data class RestaurantItem(
-    val id: Int,
-    val restName: String,
-    val cuisineType: String,
-    val loc: String,
-    val neighbour: String,
-    val rating: Float,
-    val discount: String,
-    val distance: String
-)
