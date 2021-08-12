@@ -5,6 +5,8 @@
       "name":"Mission Chinese Food",
       "neighborhood":"Manhattan",
       "photograph":"1.jpg",
+      "rating":4,
+      "discount":25,
       "address":"171 E Broadway, New York, NY 10002",
       "latlng":{
         "lat":40.713829,
@@ -49,6 +51,8 @@
       "name":"Emily",
       "neighborhood":"Brooklyn",
       "photograph":"2.jpg",
+      "rating":3,
+      "discount":45,
       "address":"919 Fulton St, Brooklyn, NY 11238",
       "latlng":{
         "lat":40.683555,

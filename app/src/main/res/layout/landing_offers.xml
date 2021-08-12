@@ -43,7 +43,7 @@
         android:background="@android:color/holo_purple"/>
 
     <TextView
-        android:id="@+id/tv_titleName"
+        android:id="@+id/restName"
         android:text="The Bake One (GhostForth)"
         android:textSize="@dimen/font_20"
         android:paddingTop="@dimen/dimen_5"
@@ -55,44 +55,8 @@
         app:layout_constraintLeft_toLeftOf="@id/cl_content"
         app:layout_constraintRight_toRightOf="@id/cl_content"/>
 
-
     <TextView
-        android:id="@+id/tv_subtitleName"
-        android:text="Lebanese"
-        android:textSize="@dimen/font_14"
-        android:paddingTop="@dimen/dimen_5"
-        android:textColor="@color/charcoal_grey_50"
-        android:fontFamily="@font/opensans_semibold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_titleName"
-        app:layout_constraintRight_toLeftOf="@id/v_bullet"/>
-
-    <View
-        android:id="@+id/v_bullet"
-        android:layout_width="@dimen/dimen_10"
-        android:layout_height="@dimen/dimen_10"
-        android:background="@drawable/bullet"
-        android:layout_marginTop="@dimen/dimen_5"
-        app:layout_constraintLeft_toLeftOf="@id/cl_content"
-        app:layout_constraintRight_toRightOf="@id/cl_content"
-        app:layout_constraintTop_toTopOf="@id/tv_subtitleName"
-        app:layout_constraintBottom_toBottomOf="@id/tv_subtitleName"/>
-
-    <TextView
-        android:id="@+id/tv_subtitle"
-        android:text="Grill"
-        android:textSize="@dimen/font_14"
-        android:paddingTop="@dimen/dimen_5"
-        android:textColor="@color/charcoal_grey_50"
-        android:fontFamily="@font/opensans_semibold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_titleName"
-        app:layout_constraintLeft_toRightOf="@id/v_bullet"/>
-
-    <TextView
-        android:id="@+id/tv_minorder"
+        android:id="@+id/tv_cuisine"
         android:text="No Minimum Order"
         android:textSize="@dimen/font_14"
         android:paddingTop="@dimen/dimen_5"
@@ -100,9 +64,48 @@
         android:fontFamily="@font/opensans_semibold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/v_bullet"
+        app:layout_constraintTop_toBottomOf="@id/restName"
+        app:layout_constraintStart_toStartOf="@id/restName"
+        app:layout_constraintEnd_toEndOf="@id/restName"/>
+
+    <TextView
+        android:id="@+id/tv_addr"
+        android:text="Lebanese"
+        android:textSize="@dimen/font_14"
+        android:padding="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/restName"
+        app:layout_constraintTop_toBottomOf="@id/tv_cuisine"
+        app:layout_constraintEnd_toStartOf="@id/v_bullet"/>
+
+    <View
+        android:id="@+id/v_bullet"
+        android:layout_width="@dimen/dimen_10"
+        android:layout_height="@dimen/dimen_10"
+        android:background="@drawable/bullet"
         app:layout_constraintLeft_toLeftOf="@id/cl_content"
-        app:layout_constraintRight_toRightOf="@id/cl_content"/>
+        app:layout_constraintRight_toRightOf="@id/cl_content"
+        app:layout_constraintTop_toTopOf="@id/tv_addr"
+        app:layout_constraintBottom_toBottomOf="@id/tv_addr"/>
+
+    <TextView
+        android:id="@+id/tv_neighbour"
+        android:text="Grill"
+        android:textSize="@dimen/font_14"
+        android:padding="@dimen/dimen_5"
+        android:textColor="@color/charcoal_grey_50"
+        android:fontFamily="@font/opensans_semibold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_cuisine"
+        app:layout_constraintStart_toEndOf="@id/v_bullet"
+        app:layout_constraintEnd_toEndOf="@id/restName"
+        android:gravity="center"/>
+
 
     <ImageView
         android:id="@+id/iv_locationMarker"
@@ -110,15 +113,15 @@
         android:layout_height="@dimen/dimen_30"
         android:paddingTop="@dimen/dimen_5"
         android:src="@drawable/location_marker"
-        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintTop_toBottomOf="@id/v_bullet"
         app:layout_constraintLeft_toLeftOf="@id/cl_content"
-        app:layout_constraintTop_toTopOf="@id/tv_location"
-        app:layout_constraintBottom_toBottomOf="@id/tv_location"
+        app:layout_constraintTop_toTopOf="@id/tv_distance"
+        app:layout_constraintBottom_toBottomOf="@id/tv_distance"
         android:layout_marginLeft="@dimen/dimen_15"
         app:tint="@color/charcoal_grey_50" />
 
     <TextView
-        android:id="@+id/tv_location"
+        android:id="@+id/tv_distance"
         android:text="2.6567 miles"
         android:textSize="@dimen/font_12"
         android:paddingTop="@dimen/dimen_5"
@@ -128,7 +131,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dimen_3"
         android:paddingRight="@dimen/dimen_3"
-        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
+        app:layout_constraintTop_toBottomOf="@id/v_bullet"
         app:layout_constraintLeft_toRightOf="@id/iv_locationMarker"/>
 
     <androidx.appcompat.widget.AppCompatRatingBar
@@ -136,25 +139,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dimen_5"
+        android:layout_marginRight="@dimen/dimen_15"
         style = "?android:attr/ratingBarStyleSmall"
-        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
-        app:layout_constraintRight_toLeftOf="@id/tv_rating"
-        app:layout_constraintTop_toTopOf="@id/tv_location"
-        app:layout_constraintBottom_toBottomOf="@id/tv_location"/>
-
-    <TextView
-        android:id="@+id/tv_rating"
-        android:text="954"
-        android:textSize="@dimen/font_12"
-        android:paddingTop="@dimen/dimen_5"
-        android:textColor="@color/charcoal_grey_50"
-        android:fontFamily="@font/opensans_semibold"
-        android:paddingLeft="@dimen/dimen_3"
-        android:paddingRight="@dimen/dimen_15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_minorder"
-        app:layout_constraintRight_toRightOf="@id/cl_content"/>
+        app:layout_constraintTop_toBottomOf="@id/v_bullet"
+        app:layout_constraintEnd_toEndOf="@id/cl_content"
+        app:layout_constraintTop_toTopOf="@id/tv_distance"
+        app:layout_constraintBottom_toBottomOf="@id/tv_distance"/>
 
     <TextView
         android:id="@+id/tv_discount"

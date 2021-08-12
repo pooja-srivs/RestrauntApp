@@ -10,7 +10,9 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AndroidSupportInjectionModule::class
+        AndroidSupportInjectionModule::class,
+   //     ActivityResolver::class,
+  //      DataResolver::class
     ]
 )
 interface AppComponent : AndroidInjector<RestaurauntApp> {

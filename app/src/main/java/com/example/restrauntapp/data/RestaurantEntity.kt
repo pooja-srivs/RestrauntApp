@@ -11,7 +11,8 @@ data class Restaurants(
     val photograph : String,
     val address : String,
     val cuisine_type : String,
-    val rating : String,
+    val rating : Int,
+    val discount : Int,
     val reviews : List<Reviews>
 )
 

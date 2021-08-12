@@ -1,4 +1,6 @@
 package com.example.restrauntapp.view.home
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeViewModel : ViewModel() {
 }
