@@ -3,6 +3,8 @@ package com.example.restrauntapp.view.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -12,37 +14,45 @@ import com.example.restrauntapp.R
 import com.example.restrauntapp.view.entity.RestaurantItem
 
 class RestaurantAdapter private constructor(
-    private val diffUtil : DiffUtil.ItemCallback<RestaurantItem>,
-    private val onItemClick : (RestaurantItem) -> Unit
-) : ListAdapter<RestaurantItem, RestaurantAdapter.RestaurantViewHolder>(diffUtil) {
+        private val diffUtil: DiffUtil.ItemCallback<RestaurantItem>,
+        private val onItemClick: (RestaurantItem) -> Unit,
+) : ListAdapter<RestaurantItem, RestaurantAdapter.RestaurantViewHolder>(diffUtil), Filterable {
+
+    private var restData : MutableList<RestaurantItem> = mutableListOf()
+    private var restFilterData : MutableList<RestaurantItem> = mutableListOf()
 
     companion object{
 
         private val diffCallback = object : DiffUtil.ItemCallback<RestaurantItem>() {
             override fun areItemsTheSame(
-                oldItem: RestaurantItem,
-                newItem: RestaurantItem
+                    oldItem: RestaurantItem,
+                    newItem: RestaurantItem,
             ): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: RestaurantItem,
-                newItem: RestaurantItem
+                    oldItem: RestaurantItem,
+                    newItem: RestaurantItem,
             ): Boolean {
                return oldItem == newItem
             }
         }
 
-        fun newInstance(onItemClick : (RestaurantItem) -> Unit) : RestaurantAdapter{
+        fun newInstance(onItemClick: (RestaurantItem) -> Unit) : RestaurantAdapter{
             return RestaurantAdapter(diffCallback, onItemClick = onItemClick)
         }
     }
 
+    fun submitData(data: MutableList<RestaurantItem>){
+        restData.addAll(data)
+        submitList(restData)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
         return RestaurantViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.rest_item, parent, false)
+                LayoutInflater.from(parent.context)
+                        .inflate(R.layout.rest_item, parent, false)
         )
     }
 
@@ -50,7 +60,7 @@ class RestaurantAdapter private constructor(
         holder.bind(getItem(position), onItemClick)
     }
 
-    class RestaurantViewHolder(view : View) : RecyclerView.ViewHolder(view){
+    class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view){
         private var restName : TextView = view.findViewById(R.id.restName)
         private var restCuisine : TextView = view.findViewById(R.id.tv_cuisine)
         private var restAddress : TextView = view.findViewById(R.id.tv_addr)
@@ -58,7 +68,7 @@ class RestaurantAdapter private constructor(
         private var restRatings : RatingBar = view.findViewById(R.id.ratings)
         private var restDiscount : TextView = view.findViewById(R.id.tv_discount)
 
-        fun bind(item : RestaurantItem, onItemClick: (RestaurantItem) -> Unit){
+        fun bind(item: RestaurantItem, onItemClick: (RestaurantItem) -> Unit){
 
             restName.text = item.restName
             restCuisine.text = item.cuisineType
@@ -69,6 +79,35 @@ class RestaurantAdapter private constructor(
 
             itemView.setOnClickListener {
                 onItemClick.invoke(item)
+            }
+        }
+    }
+
+    //perform filter
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): FilterResults {
+                val charString = charSequence.toString()
+                if (charString.isEmpty()) {
+                    restFilterData = restData
+                } else {
+                    val filteredList: MutableList<RestaurantItem> = mutableListOf()
+
+                    restData.forEach { rest ->
+                       if (rest.restName.toLowerCase().contains(charString.toLowerCase()) || rest.cuisineType.contains(charSequence)) {
+                            filteredList.add(rest)
+                        }
+                    }
+                    restFilterData = filteredList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = restFilterData
+                return filterResults
+            }
+
+            override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
+                restFilterData = filterResults.values as MutableList<RestaurantItem>
+                submitList(restFilterData)
             }
         }
     }

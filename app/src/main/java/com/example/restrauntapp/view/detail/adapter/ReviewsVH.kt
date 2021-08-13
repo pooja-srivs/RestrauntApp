@@ -10,6 +10,7 @@ class ReviewsVH(private val view : View)
 
     private val tvName : TextView = view.findViewById(R.id.tv_name)
     private val tvDescription : TextView = view.findViewById(R.id.tv_description)
+    private val tvDate : TextView = view.findViewById(R.id.tv_date)
     private val ratings : RatingBar = view.findViewById(R.id.ratings)
 
     override fun bind(data: RestSubData) {
@@ -17,6 +18,10 @@ class ReviewsVH(private val view : View)
         data.rating.let {
             ratings.visibility = View.VISIBLE
             ratings.rating = data.rating
+        }
+        data.date.let {
+            tvDate.visibility = View.VISIBLE
+            tvDate.text = data.date
         }
         tvName.text = data.name
         tvDescription.text = data.description

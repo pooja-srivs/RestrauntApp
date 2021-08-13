@@ -2,6 +2,7 @@ package com.example.restrauntapp.view.home.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.restrauntapp.network.repo.RestaurantRepo
 import com.example.restrauntapp.view.home.HomeActivity
 import com.example.restrauntapp.view.home.HomeViewModel
 import dagger.Module
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 object HomeModule {
 
     @Provides
-    fun provideHomeVMFactory() : HomeVMFactory = HomeVMFactory()
+    fun provideHomeVMFactory(repo: RestaurantRepo) : HomeVMFactory = HomeVMFactory(repo)
 
     @Provides
     fun provideHomeVM(context : HomeActivity, factory : HomeVMFactory) : HomeViewModel =
@@ -22,9 +23,9 @@ object HomeModule {
 
 
 @Singleton
-class HomeVMFactory @Inject constructor() : ViewModelProvider.NewInstanceFactory(){
+class HomeVMFactory @Inject constructor(private val repo: RestaurantRepo) : ViewModelProvider.NewInstanceFactory(){
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel() as T
+        return HomeViewModel(repo) as T
     }
 }

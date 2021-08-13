@@ -14,16 +14,6 @@ data class RestaurantItem(
     val reviews: List<RestReviews>
 ) : Serializable
 
-data class OpeningTimes(
-    val monday : String,
-    val tuesday : String,
-    val wednesday : String,
-    val thursday : String,
-    val friday : String,
-    val saturday : String,
-    val sunday : String,
-) : Serializable
-
 data class RestReviews(
     val id : Int,
     val name : String,

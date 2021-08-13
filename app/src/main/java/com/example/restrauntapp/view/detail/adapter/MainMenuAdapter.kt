@@ -2,6 +2,7 @@ package com.example.restrauntapp.view.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.restrauntapp.R

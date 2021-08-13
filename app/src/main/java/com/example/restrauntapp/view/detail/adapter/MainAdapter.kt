@@ -4,16 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.*
 import com.example.restrauntapp.R
+import com.example.restrauntapp.view.entity.RestaurantItem
 
 class MainAdapter private constructor(
     private val diffUtil: DiffUtil.ItemCallback<RestCategory>,
     private val onItemClick: (Int, Int, Boolean) -> Unit
-) : ListAdapter<RestCategory, MainAdapter.MainViewHolder>(diffUtil) {
+) : ListAdapter<RestCategory, MainAdapter.MainViewHolder>(diffUtil), Filterable {
 
     private var context : Context? = null
+    private var categoryData : MutableList<RestCategory> = mutableListOf()
+    private var categoryFilteredData : MutableList<RestCategory> = mutableListOf()
 
     companion object{
         private val diffUtil = object : DiffUtil.ItemCallback<RestCategory>() {
@@ -39,6 +44,11 @@ class MainAdapter private constructor(
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
         super.onDetachedFromRecyclerView(recyclerView)
         context = null
+    }
+
+    fun submitData(restCategoryData: MutableList<RestCategory>){
+        categoryData.addAll(restCategoryData)
+        submitList(categoryData)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -89,6 +99,38 @@ class MainAdapter private constructor(
 
             itemView.setOnClickListener {
                 onItemClick(absoluteAdapterPosition, restCategoryData.id, restCategoryData.isExpanded)
+            }
+        }
+    }
+
+    //perform filter
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): FilterResults {
+                val charString = charSequence.toString()
+                if (charString.isEmpty()) {
+                    categoryFilteredData = categoryData
+                } else {
+                    val filteredList: MutableList<RestCategory> = mutableListOf()
+
+                    categoryData.forEach { rest ->
+
+                        rest.subList.map {restSubData ->
+                            if (rest.title.toLowerCase().contains(charString.toLowerCase())) {
+                                filteredList.add(rest)
+                            }
+                        }
+                    }
+                    categoryFilteredData = filteredList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = categoryFilteredData
+                return filterResults
+            }
+
+            override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
+                categoryFilteredData = filterResults.values as MutableList<RestCategory>
+                submitList(categoryFilteredData)
             }
         }
     }

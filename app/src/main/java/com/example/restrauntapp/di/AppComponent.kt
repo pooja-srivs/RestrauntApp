@@ -11,8 +11,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-   //     ActivityResolver::class,
-  //      DataResolver::class
+        ActivityResolver::class,
+        DataResolver::class,
+        NetworkResolver::class
     ]
 )
 interface AppComponent : AndroidInjector<RestaurauntApp> {
