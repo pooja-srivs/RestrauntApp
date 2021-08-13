@@ -10,7 +10,7 @@ data class RestaurantItem(
     val rating: Float,
     val discount: String,
     val distance: String,
-    val openingHours: OpeningTimes,
+    val openingHours: List<String>,
     val reviews: List<RestReviews>
 ) : Serializable
 
@@ -25,6 +25,7 @@ data class OpeningTimes(
 ) : Serializable
 
 data class RestReviews(
+    val id : Int,
     val name : String,
     val date : String,
     val rating : String,

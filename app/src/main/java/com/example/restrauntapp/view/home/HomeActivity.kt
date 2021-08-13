@@ -21,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
     private val dataArr : MutableList<RestaurantItem> = mutableListOf()
     private val reviewArr : MutableList<RestReviews> = mutableListOf()
+    private val openingTimesArr : MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
      //   AndroidInjection.inject(this)
@@ -42,12 +43,23 @@ class HomeActivity : AppCompatActivity() {
             rest.reviews.map { review ->
                 reviewArr.add(
                     RestReviews(
-                        review.name,
-                        review.date,
-                        review.rating,
-                        review.comments
+                        id = review.id,
+                        name = review.name,
+                        date = review.date,
+                        rating = review.rating,
+                        comments = review.comments
                     )
                 )
+            }
+
+            rest.operating_hours.let { openingHour ->
+                openingTimesArr.add("Monday : ${openingHour.monday}")
+                openingTimesArr.add("Tuesday : ${openingHour.tuesday}")
+                openingTimesArr.add("Wednesday : ${openingHour.wednesday}")
+                openingTimesArr.add("Thursday : ${openingHour.thursday}")
+                openingTimesArr.add("Friday : ${openingHour.friday}")
+                openingTimesArr.add("Saturday : ${openingHour.saturday}")
+                openingTimesArr.add("Sunday : ${openingHour.sunday}")
             }
 
             dataArr.add(RestaurantItem(
@@ -58,15 +70,7 @@ class HomeActivity : AppCompatActivity() {
                 rating = rest.rating.toFloat(),
                 discount = "${rest.discount} % Off on Order abv Rs.300",
                 distance = "${rest.distance} miles",
-                openingHours = OpeningTimes(
-                    monday = rest.operating_hours.monday,
-                    tuesday = rest.operating_hours.tuesday,
-                    wednesday = rest.operating_hours.wednesday,
-                    thursday = rest.operating_hours.thursday,
-                    friday = rest.operating_hours.friday,
-                    saturday = rest.operating_hours.saturday,
-                    sunday = rest.operating_hours.sunday
-                ),
+                openingHours = openingTimesArr,
                 reviews = reviewArr
             ))
         }

@@ -30,6 +30,7 @@ data class OpeningHours(
 )
 
 data class Reviews(
+    val id : Int,
     val name : String,
     val date : String,
     val rating : String,
