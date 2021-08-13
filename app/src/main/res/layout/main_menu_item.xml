@@ -34,9 +34,6 @@
             android:layout_marginLeft="@dimen/dimen_15"
             android:layout_marginRight="@dimen/dimen_15"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             android:background="@color/light_red"/>
 
 

@@ -1,6 +1,7 @@
 package com.example.restrauntapp.view.detail.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,7 +64,7 @@ class MainAdapter private constructor(
         return getItem(position)
     }
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position), onItemClick, context)
+        holder.bind(getItem(position), onItemClick)
     }
 
     class MainViewHolder(view: View) : RecyclerView.ViewHolder(view){
@@ -74,8 +75,7 @@ class MainAdapter private constructor(
 
         fun bind(
             restCategoryData: RestCategory,
-            onItemClick: (Int, Int, Boolean) -> Unit,
-            context: Context?
+            onItemClick: (Int, Int, Boolean) -> Unit
         ){
 
             //set the view data
@@ -115,10 +115,8 @@ class MainAdapter private constructor(
 
                     categoryData.forEach { rest ->
 
-                        rest.subList.map {restSubData ->
-                            if (rest.title.toLowerCase().contains(charString.toLowerCase())) {
-                                filteredList.add(rest)
-                            }
+                        if (rest.title.toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(rest)
                         }
                     }
                     categoryFilteredData = filteredList

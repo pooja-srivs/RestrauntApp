@@ -99,7 +99,7 @@
                 android:paddingLeft="@dimen/dimen_3"
                 android:paddingRight="@dimen/dimen_3"
                 app:layout_constraintTop_toBottomOf="@id/tv_addr"
-                app:layout_constraintLeft_toRightOf="@id/iv_locationMarker"
+                app:layout_constraintStart_toEndOf="@id/iv_locationMarker"
                 android:paddingBottom="@dimen/dimen_5"/>
 
             <androidx.appcompat.widget.AppCompatRatingBar
