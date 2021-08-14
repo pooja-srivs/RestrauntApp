@@ -52,14 +52,12 @@ class DetailActivity : AppCompatActivity() {
 
         ResourceUtil.hideKeyboard(parent)
 
-        //current screen data
-        val categoryData  = viewModel.fetchData()
-
         //previous screen data
         val restaurantData = intent.getSerializableExtra("restItem") as RestaurantItem
 
-        val dataList = viewModel.prepareData(restaurantData, categoryData)
-        dataArr.addAll(dataList)
+        //current screen data
+        val categoryData  = viewModel.fetchData(restaurantData)
+        dataArr.addAll(categoryData)
 
         setListenerNData(restaurantData)
     }

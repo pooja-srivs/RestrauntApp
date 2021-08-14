@@ -15,7 +15,7 @@ class DetailViewModel(private val context: RestaurauntApp) : ViewModel() {
     private val dataArr : MutableList<RestCategory> = mutableListOf()
     private var count : Int = 0
 
-    fun fetchData(): MenuEntity {
+    fun fetchData(restaurantData: RestaurantItem): MutableList<RestCategory> {
         val menuData = ResourceUtil.getJsonString(
                 "menu.json",
                 context
@@ -24,7 +24,7 @@ class DetailViewModel(private val context: RestaurauntApp) : ViewModel() {
         //current screen data
         val categoryData  = Gson().fromJson(menuData, MenuEntity::class.java)
 
-        return categoryData
+        return prepareData(restaurantData, categoryData)
     }
 
     fun prepareData(restaurantItem: RestaurantItem, categoryData: MenuEntity): MutableList<RestCategory> {
