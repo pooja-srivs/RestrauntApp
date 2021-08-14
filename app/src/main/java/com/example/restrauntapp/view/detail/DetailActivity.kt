@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.restrauntapp.R
+import com.example.restrauntapp.util.ResourceUtil
 import com.example.restrauntapp.view.detail.adapter.MainAdapter
 import com.example.restrauntapp.view.detail.adapter.RestCategory
-import com.example.restrauntapp.view.detail.adapter.RestSubData
 import com.example.restrauntapp.view.entity.RestaurantItem
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -28,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var ratings : RatingBar
     private lateinit var tv_discount : TextView
     private lateinit var etSearch : EditText
+    private lateinit var parent : LinearLayout
 
     private lateinit var adapter: MainAdapter
     private lateinit var recyclerView: RecyclerView
@@ -38,6 +40,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        parent = findViewById(R.id.parent)
         etSearch = findViewById(R.id.et_search)
         restName = findViewById(R.id.restName)
         tv_cuisine = findViewById(R.id.tv_cuisine)
@@ -46,6 +49,8 @@ class DetailActivity : AppCompatActivity() {
         ratings = findViewById(R.id.ratings)
         tv_discount = findViewById(R.id.tv_discount)
         recyclerView = findViewById(R.id.rv_detail)
+
+        ResourceUtil.hideKeyboard(parent)
 
         //current screen data
         val categoryData  = viewModel.fetchData()
@@ -61,6 +66,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setListenerNData(restaurantData: RestaurantItem) {
 
+        //set detail data
         restaurantData.let { restItem ->
             restName.text = restItem.restName
             tv_cuisine.text = restItem.cuisineType
@@ -76,6 +82,7 @@ class DetailActivity : AppCompatActivity() {
             adapter.notifyItemChanged(position)
         }
 
+        //setup adapter
         adapter = MainAdapter.newInstance(onItemClick)
         recyclerView.adapter = adapter
         adapter.submitData(dataArr)

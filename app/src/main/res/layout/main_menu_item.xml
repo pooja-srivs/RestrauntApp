@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_10"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:nestedScrollingEnabled="false"/>
+            />
 
     </LinearLayout>
 

@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".view.detail.DetailActivity"
     android:orientation="vertical"
-    android:background="@color/light_red">
+    android:background="@color/light_red"
+    android:id="@+id/parent">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -107,5 +108,5 @@
         android:nestedScrollingEnabled="false"/>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

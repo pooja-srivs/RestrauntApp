@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.restrauntapp.R
 import com.example.restrauntapp.data.RestaurantEntity
@@ -14,6 +15,7 @@ import com.example.restrauntapp.util.ResourceUtil
 import com.example.restrauntapp.view.detail.DetailActivity
 import com.example.restrauntapp.view.entity.RestReviews
 import com.example.restrauntapp.view.entity.RestaurantItem
+import com.example.restrauntapp.view.home.adapter.RestaurantAdapter
 import com.google.gson.Gson
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -24,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var viewModel: HomeViewModel
 
     private lateinit var etSearch : EditText
+    private lateinit var parent : ConstraintLayout
     private lateinit var adapter : RestaurantAdapter
     private lateinit var recyclerView : RecyclerView
     private val dataArr : MutableList<RestaurantItem> = mutableListOf()
@@ -33,8 +36,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        parent = findViewById(R.id.parent)
         recyclerView = findViewById(R.id.rv_home)
         etSearch = findViewById(R.id.et_search)
+
+        ResourceUtil.hideKeyboard(parent)
 
         val restaurauntData = ResourceUtil.getJsonString(
             "restauraunt.json",

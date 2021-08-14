@@ -1,7 +1,5 @@
 package com.example.restrauntapp.view.detail
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.restrauntapp.RestaurauntApp
 import com.example.restrauntapp.data.MenuEntity

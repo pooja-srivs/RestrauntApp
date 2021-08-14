@@ -2,10 +2,13 @@ package com.example.restrauntapp.view.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.restrauntapp.R
+import com.example.restrauntapp.view.detail.adapter.subcategory.BaseViewHolder
+import com.example.restrauntapp.view.detail.adapter.subcategory.MenuVH
+import com.example.restrauntapp.view.detail.adapter.subcategory.OpeningHoursVH
+import com.example.restrauntapp.view.detail.adapter.subcategory.ReviewsVH
 
 class MainSubAdapter private constructor(private val diffUtil: DiffUtil.ItemCallback<RestSubData>)
     : ListAdapter<RestSubData, BaseViewHolder<RestSubData>>(diffUtil) {
@@ -58,7 +61,7 @@ class MainSubAdapter private constructor(private val diffUtil: DiffUtil.ItemCall
                      .from(parent.context)
                      .inflate(R.layout.sub_menu_item, parent, false)
 
-                 return MenuItemsVH(view)
+                 return MenuVH(view)
              }
 
              else ->{

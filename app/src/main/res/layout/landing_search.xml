@@ -72,7 +72,7 @@
         android:fontFamily="@font/opensans_semibold"
         android:textColor="@color/charcoal_grey"
         android:textSize="@dimen/dimen_15"
-        android:hint="Search Your Query"
+        android:hint="Search Item"
         android:gravity="center|left"
         android:paddingBottom="@dimen/dimen_15"
         android:paddingRight="@dimen/dimen_25"

@@ -1,6 +1,5 @@
 package com.example.restrauntapp.view.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.restrauntapp.data.RestaurantEntity
@@ -44,8 +43,6 @@ class HomeViewModel(private val repo: RestaurantRepo) : ViewModel() {
                         )
                 )
             }
-
-            Log.d("*** Review Arr Size >>>", ""+reviewArr.size)
 
             recyclerList.add(RestaurantItem(
                     id = rest.id,

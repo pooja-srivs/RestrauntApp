@@ -1,9 +1,10 @@
-package com.example.restrauntapp.view.detail.adapter
+package com.example.restrauntapp.view.detail.adapter.subcategory
 
 import android.view.View
 import android.widget.RatingBar
 import android.widget.TextView
 import com.example.restrauntapp.R
+import com.example.restrauntapp.view.detail.adapter.RestSubData
 
 class ReviewsVH(private val view : View)
     : BaseViewHolder<RestSubData>(view) {
