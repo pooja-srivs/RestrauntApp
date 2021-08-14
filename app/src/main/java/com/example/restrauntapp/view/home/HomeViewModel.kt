@@ -24,12 +24,12 @@ class HomeViewModel(private val context: RestaurauntApp, private val repo: Resta
     private var recyclerList : MutableList<RestaurantItem> = mutableListOf()
 
     fun fetchHomeData(): MutableList<RestaurantItem> {
-        val restaurauntData = ResourceUtil.getJsonString(
-                "restauraunt.json",
+        val restaurantData = ResourceUtil.getJsonString(
+                "restaurant.json",
                 context
         )
 
-        val homeData  = Gson().fromJson(restaurauntData, RestaurantEntity::class.java)
+        val homeData  = Gson().fromJson(restaurantData, RestaurantEntity::class.java)
 
       return prepareHomeData(homeData)
     }

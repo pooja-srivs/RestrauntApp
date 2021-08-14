@@ -18,7 +18,7 @@ class MockInterceptor(
                 ResponseBody.create(
                     "application/json".toMediaTypeOrNull(),
                     ResourceUtil.getJsonString(
-                        "restauraunt.json",
+                        "restaurant.json",
                         context
                     )!!
                 )
@@ -28,7 +28,7 @@ class MockInterceptor(
                 ResponseBody.create(
                     "application/json".toMediaTypeOrNull(),
                     ResourceUtil.getJsonString(
-                        "restauraunt.json",
+                        "restaurant.json",
                         context
                     )!!
                 )
